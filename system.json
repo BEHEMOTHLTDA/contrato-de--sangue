@@ -1,0 +1,61 @@
+{
+  "name": "contrato-de-sangue",
+  "title": "Contrato de Sangue",
+  "type": "system",
+  "id": "contrato-de-sangue",
+  "version": "0.1.0",
+  "manifest": "./system.json",
+  "download": null,
+  "description": "Um sistema completo de horror gótico‑punk inspirado pelo RPG Contrato de Sangue. Este módulo inclui uma ficha estilizada baseada no design fornecido pelo usuário, mecânicas automatizadas para rolagens, cálculo de reserva de dados, e integração opcional com o módulo Simple Calendar para rastrear eventos únicos.",
+  "authors": [
+    {
+      "name": "Agente ChatGPT",
+      "email": "", 
+      "url": ""
+    }
+  ],
+  "compatibility": {
+    "minimum": "12.0.0",
+    "verified": "12.0.0",
+    "maximum": "12"
+  },
+  "esmodules": [
+    "module/contrato-de-sangue.js",
+    "module/contracto-item.js"
+  ],
+  "styles": [
+    "styles/contrato-de-sangue.css"
+  ],
+  "packs": [
+    {
+      "name": "powers",
+      "label": "Poderes",
+      "type": "Item",
+      "path": "packs/powers.db"
+    },
+    {
+      "name": "advantages",
+      "label": "Vantagens",
+      "type": "Item",
+      "path": "packs/advantages.db"
+    },
+    {
+      "name": "equipment",
+      "label": "Equipamentos",
+      "type": "Item",
+      "path": "packs/equipment.db"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
+}
