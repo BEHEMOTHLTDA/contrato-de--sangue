@@ -2,7 +2,7 @@
   "name": "contrato-de-sangue",
   "title": "Contrato de Sangue",
   "type": "system",
-  "id": "contrato-de-sangue",
+  "id": "contrato-de--sangue",
   "version": "0.1.0",
   "manifest": "./system.json",
   "download": null,
