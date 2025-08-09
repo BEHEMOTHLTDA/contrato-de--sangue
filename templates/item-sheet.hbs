@@ -1,0 +1,28 @@
+<form class="contracto-item-sheet" autocomplete="off">
+  <header class="sheet-header">
+    <h1><input type="text" name="name" value="{{item.name}}" placeholder="Nome do Item"/></h1>
+    <p><strong>Tipo:</strong> {{item.type}}</p>
+  </header>
+  <div class="sheet-body">
+    <div class="form-group">
+      <label>Descrição</label>
+      <textarea name="system.description" rows="5">{{system.description}}</textarea>
+    </div>
+    {{#if system.activation}}
+    <div class="form-group">
+      <label>Ação de Ativação</label>
+      <input type="text" name="system.activation" value="{{system.activation}}"/>
+    </div>
+    <div class="form-group">
+      <label>Custo</label>
+      <input type="number" name="system.cost" value="{{system.cost}}"/>
+    </div>
+    {{/if}}
+    {{#if system.bonus}}
+    <div class="form-group">
+      <label>Bônus</label>
+      <input type="text" name="system.bonus" value="{{system.bonus}}"/>
+    </div>
+    {{/if}}
+  </div>
+</form>

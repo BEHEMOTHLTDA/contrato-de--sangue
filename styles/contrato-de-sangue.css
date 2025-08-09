@@ -1,0 +1,246 @@
+/*
+ * Estilo para o sistema Contrato de Sangue.
+ * A folha usa uma imagem de fundo baseada na ficha física fornecida. Os
+ * elementos de interface são desenhados sobre painéis semi‑transparentes
+ * para melhorar a legibilidade sem perder a estética de pergaminho.
+ */
+
+.contracto-sheet {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: #2f1b0b;
+  font-family: "Times New Roman", serif;
+  overflow: hidden;
+}
+
+/* Plano de fundo semi‑transparente */
+.sheet-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/ficha-bg.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.sheet-header {
+  padding: 10px;
+}
+
+.sheet-header h1 {
+  margin: 0;
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.sheet-header input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #2f1b0b;
+  width: 100%;
+  color: inherit;
+  text-align: center;
+}
+
+/* Guias */
+.sheet-tabs {
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255,248,230,0.6);
+  border-bottom: 2px solid #2f1b0b;
+}
+.sheet-tabs .item {
+  flex: 1;
+  text-align: center;
+  padding: 6px 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: #2f1b0b;
+}
+.sheet-tabs .item.active {
+  background: rgba(255,248,230,0.9);
+  border-bottom: 2px solid #2f1b0b;
+}
+
+/* Painéis */
+.panel {
+  background: rgba(255,248,230,0.8);
+  border-radius: 6px;
+  padding: 12px;
+  margin: 8px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+.grid-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.attribute-row {
+  flex: 1 1 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.attribute-row label {
+  font-weight: bold;
+}
+.attribute-row input {
+  width: 60px;
+  text-align: center;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #2f1b0b;
+  border-radius: 4px;
+}
+
+.reserva-panel, .mortalidade-panel {
+  margin-top: 8px;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Painel da balança da alma */
+.balance-panel {
+  margin-top: 10px;
+}
+.balance-panel .bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  margin-bottom: 2px;
+}
+.balance-panel .bars {
+  display: flex;
+  gap: 8px;
+}
+.balance-panel .bar {
+  flex: 1;
+  height: 10px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid #2f1b0b;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.balance-panel .bar .fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a12121, #e65151);
+}
+.balance-panel .bar.bestial .fill {
+  background: linear-gradient(90deg, #1b5e20, #4caf50);
+}
+
+/* Habilidades */
+.skills-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+}
+.skill-category {
+  flex: 1 1 45%;
+  background: rgba(255,248,230,0.8);
+  border-radius: 6px;
+  padding: 8px;
+}
+.skill-category h3 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 1.1em;
+  border-bottom: 1px solid #2f1b0b;
+}
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.skill-row label {
+  flex: 1;
+  font-size: 0.9em;
+}
+.skill-row input {
+  flex: 0 0 50px;
+  text-align: center;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #2f1b0b;
+  border-radius: 4px;
+}
+.skill-row a {
+  flex: 0 0 24px;
+  text-align: center;
+  color: #2f1b0b;
+}
+
+/* Anotações */
+.notes-panel textarea {
+  width: 100%;
+  min-height: 200px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #2f1b0b;
+  border-radius: 4px;
+  padding: 8px;
+  resize: vertical;
+  font-family: inherit;
+  color: inherit;
+}
+
+.history-panel {
+  margin-top: 12px;
+  padding-top: 6px;
+  border-top: 1px dashed #2f1b0b;
+}
+.history-panel h3 {
+  margin-bottom: 4px;
+  font-size: 1.1em;
+}
+.history-panel ul {
+  list-style: none;
+  padding-left: 0;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 0.85em;
+}
+.history-panel li {
+  margin-bottom: 2px;
+}
+
+/* Folha de item */
+.contracto-item-sheet {
+  padding: 10px;
+  background: rgba(255,248,230,0.8);
+  color: #2f1b0b;
+  font-family: "Times New Roman", serif;
+}
+.contracto-item-sheet .sheet-header h1 input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #2f1b0b;
+  background: transparent;
+  font-size: 1.4em;
+}
+.contracto-item-sheet .form-group {
+  margin-bottom: 8px;
+}
+.contracto-item-sheet .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.contracto-item-sheet input[type="text"],
+.contracto-item-sheet input[type="number"],
+.contracto-item-sheet textarea {
+  width: 100%;
+  padding: 4px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #2f1b0b;
+  border-radius: 4px;
+}

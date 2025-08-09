@@ -1,0 +1,94 @@
+{{!--
+  Actor sheet template para o sistema Contrato de Sangue.
+
+  A folha utiliza uma imagem de fundo inspirada na ficha física fornecida.
+  Para garantir legibilidade, os painéis de atributos e perícias são
+  desenhados sobre áreas semi‑transparentes. Os rótulos e botões são
+  posicionados de forma semelhante ao design original, mas adaptados para
+  interatividade digital. Traduzido com base no idioma ativo.
+--}}
+
+<form class="contracto-sheet" autocomplete="off">
+  <div class="sheet-bg"></div>
+  <header class="sheet-header">
+    <h1><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'CONTRATO.ACTOR.GENERIC'}}"/></h1>
+  </header>
+  <nav class="sheet-tabs" data-group="primary">
+    <a class="item" data-tab="attributes">{{localize 'CONTRATO.SHEET.TABS.ATTRIBUTES'}}</a>
+    <a class="item" data-tab="skills">{{localize 'CONTRATO.SHEET.TABS.SKILLS'}}</a>
+    <a class="item" data-tab="notes">{{localize 'CONTRATO.SHEET.TABS.NOTES'}}</a>
+  </nav>
+  <section class="sheet-body">
+    {{!-- Tab de Atributos --}}
+    <div class="tab attributes" data-tab="attributes">
+      <div class="panel attributes-panel">
+        <h2>{{localize 'CONTRATO.SHEET.TABS.ATTRIBUTES'}}</h2>
+        <div class="grid-attributes">
+          <div class="attribute-row">
+            <label>{{localize 'CONTRATO.ATTRIBUTES.HUMANIDADE'}}</label>
+            <input type="number" name="system.attributes.humanidade" data-attr="humanidade" value="{{system.attributes.humanidade}}" min="0" max="11"/>
+          </div>
+          <div class="attribute-row">
+            <label>{{localize 'CONTRATO.ATTRIBUTES.BESTIALIDADE'}}</label>
+            <input type="number" name="system.attributes.bestialidade" data-attr="bestialidade" value="{{system.attributes.bestialidade}}" min="0" max="11"/>
+          </div>
+          <div class="attribute-row">
+            <label>{{localize 'CONTRATO.ATTRIBUTES.MORTALIDADE'}}</label>
+            <input type="number" name="system.attributes.mortalidade" data-attr="mortalidade" value="{{system.attributes.mortalidade}}" min="0" max="20"/>
+          </div>
+        </div>
+        <div class="reserva-panel">
+          <span><strong>Reserva de Dados:</strong> {{system.reservaDados.current}} / {{system.reservaDados.max}}</span>
+        </div>
+        <div class="mortalidade-panel">
+          <span><strong>Penalidade:</strong> -{{system.mortalidade.penalty}}</span>
+          <span><strong>Caça:</strong> {{system.mortalidade.hunt}}</span>
+        </div>
+        <div class="balance-panel">
+          <div class="bar-labels">
+            <span>{{localize 'CONTRATO.ATTRIBUTES.HUMANIDADE'}}</span>
+            <span>{{localize 'CONTRATO.ATTRIBUTES.BESTIALIDADE'}}</span>
+          </div>
+          <div class="bars">
+            <div class="bar human"><div class="fill" style="width: {{balance.humanPct}}%"></div></div>
+            <div class="bar bestial"><div class="fill" style="width: {{balance.bestialPct}}%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- Tab de Perícias --}}
+      <div class="tab tab-skills" data-tab="skills">
+        <div class="panel skills-panel">
+          {{#each categories}}
+            <div class="skill-category">
+              <h3>{{label}}</h3>
+              {{#each list}}
+                <div class="skill-row">
+                  <label>{{label}}</label>
+                  <input type="number" name="system.skills.{{key}}" value="{{value}}" min="0" max="10"/>
+                  <a class="skill-roll" data-skill="{{key}}"><i class="fas fa-dice-d20"></i></a>
+                </div>
+              {{/each}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    {{!-- Tab de Anotações --}}
+    <div class="tab tab-notes" data-tab="notes">
+      <div class="panel notes-panel">
+        <h2>{{localize 'CONTRATO.SHEET.TABS.NOTES'}}</h2>
+        <textarea name="system.notes" rows="10" placeholder="Escreva suas anotações aqui...">{{system.notes}}</textarea>
+        {{#if flags.contrato-de-sangue.history}}
+        <div class="history-panel">
+          <h3>Histórico</h3>
+          <ul>
+            {{#each flags.contrato-de-sangue.history as |entry|}}
+              <li>{{formatTimestamp entry.timestamp}} – {{entry.type}} {{entry.skill}}: {{entry.total}}</li>
+            {{/each}}
+          </ul>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </section>
+</form>
